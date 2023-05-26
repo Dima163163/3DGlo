@@ -4,6 +4,8 @@ const modal = () => {
   const closeBtn = modal.querySelector(".popup-close");
   const modalContent = modal.querySelector(".popup-content");
 
+  const width = document.documentElement.offsetWidth;
+
   let count = 0;
   let idInvertal;
   const modalAnimation = () => {
@@ -11,13 +13,18 @@ const modal = () => {
 
     idInvertal = requestAnimationFrame(modalAnimation);
 
-    if (count <= 50) {
-      modal.style.display = "block";
-      modalContent.style.transform = `translateX(-${count}px)`;
+    if (width > 768) {
+      if (count <= 50) {
+        modal.style.display = "block";
+        modalContent.style.transform = `translateX(-${count}px)`;
+      } else {
+        cancelAnimationFrame(idInvertal);
+        modalContent.style = "";
+        count = 0;
+      }
     } else {
       cancelAnimationFrame(idInvertal);
-      modalContent.style = "";
-      count = 0;
+      modal.style.display = "block";
     }
   };
 
@@ -29,19 +36,18 @@ const modal = () => {
     modal.style.display = "none";
   });
 
-  window.addEventListener("resize", () => {
-    const width = document.documentElement.clientWidth;
-    console.log(width);
+  // window.addEventListener("resize", () => {
+  //   const width = document.documentElement.clientWidth;
 
-    if (width <= 768) {
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          cancelAnimationFrame(idInvertal);
-          modal.style.display = "block";
-        });
-      });
-    }
-  });
+  //   if (width <= 768) {
+  //     buttons.forEach((btn) => {
+  //       btn.addEventListener("click", () => {
+  //         cancelAnimationFrame(idInvertal);
+  //         modal.style.display = "block";
+  //       });
+  //     });
+  //   }
+  // });
 };
 
 export default modal;
