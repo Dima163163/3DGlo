@@ -21,21 +21,9 @@ const modal = () => {
     }
   };
 
-  // const screenUserWidth = () => {
-  //   const width = document.documentElement.clientWidth;
-
-  //   console.log(width);
-
-  //   if (width < 768) {
-  //     cancelAnimationFrame(modalAnimation);
-  //   } else {
-  //     requestAnimationFrame(modalAnimation);
-  //   }
-  // };
-
-  // buttons.forEach((btn) => {
-  //   btn.addEventListener("click", modalAnimation);
-  // });
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", modalAnimation);
+  });
 
   closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
@@ -43,17 +31,12 @@ const modal = () => {
 
   window.addEventListener("resize", () => {
     const width = document.documentElement.clientWidth;
+
     if (width < 768) {
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
-          cancelAnimationFrame(idInvertal);
           modal.style.display = "block";
         });
-      });
-    }
-    if (width > 768) {
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", modalAnimation);
       });
     }
   });
