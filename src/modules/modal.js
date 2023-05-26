@@ -4,16 +4,17 @@ const modal = () => {
   const closeBtn = modal.querySelector(".popup-close");
   const modalContent = modal.querySelector(".popup-content");
 
-  const width = document.documentElement.offsetWidth;
+  const width = document.documentElement.clientWidth;
 
   let count = 0;
   let idInvertal;
+
   const modalAnimation = () => {
-    count++;
-
-    idInvertal = requestAnimationFrame(modalAnimation);
-
     if (width > 768) {
+      count++;
+
+      idInvertal = requestAnimationFrame(modalAnimation);
+
       if (count <= 50) {
         modal.style.display = "block";
         modalContent.style.transform = `translateX(-${count}px)`;
@@ -23,7 +24,6 @@ const modal = () => {
         count = 0;
       }
     } else {
-      cancelAnimationFrame(idInvertal);
       modal.style.display = "block";
     }
   };
@@ -35,19 +35,6 @@ const modal = () => {
   closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
   });
-
-  // window.addEventListener("resize", () => {
-  //   const width = document.documentElement.clientWidth;
-
-  //   if (width <= 768) {
-  //     buttons.forEach((btn) => {
-  //       btn.addEventListener("click", () => {
-  //         cancelAnimationFrame(idInvertal);
-  //         modal.style.display = "block";
-  //       });
-  //     });
-  //   }
-  // });
 };
 
 export default modal;
