@@ -32,7 +32,7 @@ const modal = () => {
   window.addEventListener("resize", () => {
     const width = document.documentElement.clientWidth;
 
-    if (width < 768) {
+    if (width <= 768) {
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
           modal.style.display = "block";
