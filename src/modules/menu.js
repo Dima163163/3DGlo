@@ -5,10 +5,20 @@ const menu = () => {
   const menuItems = menu.querySelectorAll("ul>li>a");
   const anchors = menu.querySelectorAll('ul>li>a[href*="#"]');
   const serviceBlock = document.querySelector('a[href*="#"]');
-  console.log(serviceBlock);
 
   const handleMenu = () => {
     menu.classList.toggle("active-menu");
+  };
+
+  const scrollIntoView = function (event) {
+    event.preventDefault();
+    const blockID = event.currentTarget.getAttribute("href");
+    const blockElem = document.querySelector("" + blockID);
+    console.log(blockElem);
+    blockElem.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   menuBtn.addEventListener("click", handleMenu);
@@ -20,23 +30,9 @@ const menu = () => {
   );
 
   anchors.forEach((anchor) => {
-    anchor.addEventListener("click", function (event) {
-      event.preventDefault();
-      const blockID = anchor.getAttribute("href");
-      document.querySelector("" + blockID).scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
+    anchor.addEventListener("click", scrollIntoView);
   });
-  serviceBlock.addEventListener("click", function (event) {
-    event.preventDefault();
-    const serviceId = serviceBlock.getAttribute("href");
-    document.querySelector("" + serviceId).scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  });
+  serviceBlock.addEventListener("click", scrollIntoView);
 };
 
 export default menu;
