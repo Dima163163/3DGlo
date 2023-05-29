@@ -14,7 +14,7 @@ const formValidation = () => {
     const messagePattern = /^[а-яё]+(?:[ -]{1}[а-яё]*)?$/i;
     const isValid = messagePattern.test(message);
     if (!isValid) {
-      this.setCustomValidity("Неправильный формат имени");
+      this.setCustomValidity("Неправильный формат вода.Только кириллица.");
     } else {
       this.setCustomValidity("");
     }
@@ -23,7 +23,7 @@ const formValidation = () => {
 
   const validationEmail = function () {
     const email = this.value;
-    const emailPattern = /[\-\.\w]+@([\w]+\.)+[\w]+/gi;
+    const emailPattern = /[\-\.\w\_\.\!\~\*\']+@([\w]+\.)+[\w]+/gi;
     const isValid = emailPattern.test(email);
     if (!isValid) {
       this.setCustomValidity("Неправильный формат email");
@@ -36,10 +36,12 @@ const formValidation = () => {
 
   const validationPhone = function () {
     const phone = this.value;
-    const phonePattern = /\+\d{11}$/;
+    console.log(phone);
+    const phonePattern = /\d{1}\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g;
     const isValid = phonePattern.test(phone);
+    console.log(isValid);
     if (!isValid) {
-      this.setCustomValidity("Неправильный формат телефона");
+      this.setCustomValidity("Формат телефона в виде: X(XXX)XXX-XX-XX");
     } else {
       this.setCustomValidity("");
     }
