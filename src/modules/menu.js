@@ -22,40 +22,26 @@ const menu = () => {
   // };
 
   const smoothScroll = (target, duration) => {
-    console.log("target1", target);
-    console.log("duration", duration);
     //текущая позиция в пикселях
     let currentY = window.pageYOffset;
-    console.log("currentY", currentY);
+
     //отслеживает позицию Y в пикселях
     target = document.getElementById(target);
-    console.log("target2", target);
 
     let targetYPos = target.offsetTop;
-    console.log("targetYPos", targetYPos);
+
     //оставшееся расстояние до цели в пикселях
     let distance = targetYPos - currentY;
-    console.log("distance", distance);
+
     //отслеживание времни
     let start = null;
 
     const animation = (timestamp) => {
-      console.log("timestamp", timestamp);
-      console.log("start1", start);
-
       if (!start) start = timestamp;
-
-      console.log("timestamp", timestamp);
-      console.log("start2", start);
 
       let timeElapsed = timestamp - start;
 
       let run = ease(timeElapsed, currentY, distance, duration);
-      console.log(run);
-      console.log("timeElapsed", timeElapsed);
-      console.log("currentY", currentY);
-      console.log("distance", distance);
-      console.log("duration", duration);
 
       window.scrollTo(0, run);
       if (timeElapsed < duration) {
