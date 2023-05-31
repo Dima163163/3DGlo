@@ -1,10 +1,11 @@
 const menu = () => {
+  const blockMain = document.querySelector("main");
   const menuBtn = document.querySelector(".menu");
   const menu = document.querySelector("menu");
-  const closeBtn = menu.querySelector(".close-btn");
-  const menuItems = menu.querySelectorAll("ul>li>a");
-  const anchors = menu.querySelectorAll('ul>li>a[href*="#"]');
-  const serviceBlock = document.querySelector('a[href*="#"]');
+  const menuItemsLinks = menu.querySelectorAll('ul>li>a[href*="#"]');
+  // const closeBtn = menu.querySelector(".close-btn");
+  // const menuItems = menu.querySelectorAll("ul>li>a");
+  // const serviceBlock = document.querySelector('a[href*="#"]');
 
   const handleMenu = () => {
     menu.classList.toggle("active-menu");
@@ -33,7 +34,6 @@ const menu = () => {
     //оставшееся расстояние до цели в пикселях
     let distance = targetYPos - currentY;
 
-    //отслеживание времни
     let start = null;
 
     const animation = (timestamp) => {
@@ -74,19 +74,40 @@ const menu = () => {
     smoothScroll(scrollTarget, 1000);
   };
 
-  menuBtn.addEventListener("click", handleMenu);
+  blockMain.addEventListener("click", (e) => {
+    if (e.target.closest(".menu")) {
+      handleMenu();
+    }
+    const serveceBtn = e.target.closest("a");
+    if (serveceBtn) {
+      serveceBtn.addEventListener("click", scrollAnimation);
+    }
+  });
 
-  closeBtn.addEventListener("click", handleMenu);
+  menu.addEventListener("click", (e) => {
+    if (e.target.classList.contains("close-btn")) {
+      menu.classList.toggle("active-menu");
+    }
+    if (e.target.closest("a")) {
+      menuItemsLinks.forEach((item) => {
+        item.addEventListener("click", scrollAnimation);
+      });
+    }
+  });
 
-  menuItems.forEach((menuItem) =>
-    menuItem.addEventListener("click", handleMenu)
-  );
+  // menuBtn.addEventListener("click", handleMenu);
 
-  menuItems.forEach((menuItem) =>
-    menuItem.addEventListener("click", scrollAnimation)
-  );
+  // closeBtn.addEventListener("click", handleMenu);
 
-  serviceBlock.addEventListener("click", scrollAnimation);
+  // menuItems.forEach((menuItem) =>
+  //   menuItem.addEventListener("click", handleMenu)
+  // );
+
+  // menuItems.forEach((menuItem) =>
+  //   menuItem.addEventListener("click", scrollAnimation)
+  // );
+
+  // serviceBlock.addEventListener("click", scrollAnimation);
 
   // anchors.forEach((anchor) => {
   //   anchor.addEventListener("click", scrollIntoView);

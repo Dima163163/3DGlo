@@ -3,9 +3,11 @@ import menu from "./modules/menu";
 import modal from "./modules/modal";
 import calculator from "./modules/calculator";
 import formValidation from "./modules/formValidation";
+import tabs from "./modules/tabs";
 
 timer("22 october 2021");
 menu();
 modal();
 calculator();
 formValidation();
+tabs();
