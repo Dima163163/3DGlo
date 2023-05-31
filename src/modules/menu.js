@@ -3,24 +3,10 @@ const menu = () => {
   const menuBtn = document.querySelector(".menu");
   const menu = document.querySelector("menu");
   const menuItemsLinks = menu.querySelectorAll('ul>li>a[href*="#"]');
-  // const closeBtn = menu.querySelector(".close-btn");
-  // const menuItems = menu.querySelectorAll("ul>li>a");
-  // const serviceBlock = document.querySelector('a[href*="#"]');
 
   const handleMenu = () => {
     menu.classList.toggle("active-menu");
   };
-
-  // const scrollIntoView = function (event) {
-  //   event.preventDefault();
-  //   const blockID = event.currentTarget.getAttribute("href");
-  //   const blockElem = document.querySelector("" + blockID);
-  //   console.log(blockElem);
-  //   blockElem.scrollIntoView({
-  //     behavior: "smooth",
-  //     block: "start",
-  //   });
-  // };
 
   const smoothScroll = (target, duration) => {
     //текущая позиция в пикселях
@@ -74,17 +60,43 @@ const menu = () => {
     smoothScroll(scrollTarget, 1000);
   };
 
-  blockMain.addEventListener("click", (e) => {
-    if (e.target.closest(".menu")) {
-      handleMenu();
-    }
-    const serveceBtn = e.target.closest("a");
+  // blockMain.addEventListener("click", (e) => {
+  //   if (e.target.closest(".menu")) {
+  //     handleMenu();
+  //   }
+  //   const serveceBtn = e.target.closest("a");
+  //   if (serveceBtn) {
+  //     serveceBtn.addEventListener("click", scrollAnimation);
+  //   }
+  // });
+
+  // menu.addEventListener("click", (e) => {
+  //   if (e.target.classList.contains("close-btn")) {
+  //     menu.classList.toggle("active-menu");
+  //   }
+  //   if (e.target.closest("a")) {
+  //     menuItemsLinks.forEach((item) => {
+  //       item.addEventListener("click", scrollAnimation);
+  //     });
+  //   }
+  // });
+
+  document.addEventListener("click", (e) => {
+    const serveceBtn = e.target.closest('a[href="#service-block"]');
     if (serveceBtn) {
       serveceBtn.addEventListener("click", scrollAnimation);
     }
-  });
 
-  menu.addEventListener("click", (e) => {
+    if (menu.classList.contains("active-menu")) {
+      if (!e.target.closest(".active-menu")) {
+        handleMenu();
+      }
+    }
+
+    if (e.target.closest(".menu")) {
+      handleMenu();
+    }
+
     if (e.target.classList.contains("close-btn")) {
       menu.classList.toggle("active-menu");
     }
@@ -94,25 +106,6 @@ const menu = () => {
       });
     }
   });
-
-  // menuBtn.addEventListener("click", handleMenu);
-
-  // closeBtn.addEventListener("click", handleMenu);
-
-  // menuItems.forEach((menuItem) =>
-  //   menuItem.addEventListener("click", handleMenu)
-  // );
-
-  // menuItems.forEach((menuItem) =>
-  //   menuItem.addEventListener("click", scrollAnimation)
-  // );
-
-  // serviceBlock.addEventListener("click", scrollAnimation);
-
-  // anchors.forEach((anchor) => {
-  //   anchor.addEventListener("click", scrollIntoView);
-  // });
-  // serviceBlock.addEventListener("click", scrollIntoView);
 };
 
 export default menu;
