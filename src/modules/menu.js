@@ -60,33 +60,7 @@ const menu = () => {
     smoothScroll(scrollTarget, 1000);
   };
 
-  // blockMain.addEventListener("click", (e) => {
-  //   if (e.target.closest(".menu")) {
-  //     handleMenu();
-  //   }
-  //   const serveceBtn = e.target.closest("a");
-  //   if (serveceBtn) {
-  //     serveceBtn.addEventListener("click", scrollAnimation);
-  //   }
-  // });
-
-  // menu.addEventListener("click", (e) => {
-  //   if (e.target.classList.contains("close-btn")) {
-  //     menu.classList.toggle("active-menu");
-  //   }
-  //   if (e.target.closest("a")) {
-  //     menuItemsLinks.forEach((item) => {
-  //       item.addEventListener("click", scrollAnimation);
-  //     });
-  //   }
-  // });
-
-  document.addEventListener("click", (e) => {
-    const serveceBtn = e.target.closest('a[href="#service-block"]');
-    if (serveceBtn) {
-      serveceBtn.addEventListener("click", scrollAnimation);
-    }
-
+  blockMain.addEventListener("click", (e) => {
     if (menu.classList.contains("active-menu")) {
       if (!e.target.closest(".active-menu")) {
         handleMenu();
@@ -96,7 +70,13 @@ const menu = () => {
     if (e.target.closest(".menu")) {
       handleMenu();
     }
+    const serveceBtn = e.target.closest("a");
+    if (serveceBtn) {
+      serveceBtn.addEventListener("click", scrollAnimation);
+    }
+  });
 
+  menu.addEventListener("click", (e) => {
     if (e.target.classList.contains("close-btn")) {
       menu.classList.toggle("active-menu");
     }
@@ -106,6 +86,32 @@ const menu = () => {
       });
     }
   });
+
+  // document.addEventListener("click", (e) => {
+  //   const serveceBtn = e.target.closest('a[href="#service-block"]');
+  //   if (serveceBtn) {
+  //     serveceBtn.addEventListener("click", scrollAnimation);
+  //   }
+
+  //   if (menu.classList.contains("active-menu")) {
+  //     if (!e.target.closest(".active-menu")) {
+  //       handleMenu();
+  //     }
+  //   }
+
+  //   if (e.target.closest(".menu")) {
+  //     handleMenu();
+  //   }
+
+  //   if (e.target.classList.contains("close-btn")) {
+  //     menu.classList.toggle("active-menu");
+  //   }
+  //   if (e.target.closest("a")) {
+  //     menuItemsLinks.forEach((item) => {
+  //       item.addEventListener("click", scrollAnimation);
+  //     });
+  //   }
+  // });
 };
 
 export default menu;
