@@ -14,14 +14,14 @@ const slider = () => {
   const createDots = () => {
     slides.forEach((slide, index) => {
       if (currentDot <= index) {
-        let dots = document.createElement("li");
+        let dot = document.createElement("li");
         if (index === 0) {
-          dots.classList.add("dot");
-          dots.classList.add("dot-active");
+          dot.classList.add("dot");
+          dot.classList.add("dot-active");
         } else {
-          dots.classList.add("dot");
+          dot.classList.add("dot");
         }
-        dotsList.append(dots);
+        dotsList.append(dot);
       }
     });
     dots = document.querySelectorAll(".dot");
