@@ -4,7 +4,7 @@ const slider = () => {
   const dotsList = document.querySelector(".portfolio-dots");
   const timerInterval = 2000;
 
-  let dots = document.querySelectorAll(".dot");
+  let dots;
 
   let currentSlide = 0;
   let interval;
@@ -14,7 +14,7 @@ const slider = () => {
   const createDots = () => {
     slides.forEach((slide, index) => {
       if (currentDot <= index) {
-        dots = document.createElement("li");
+        let dots = document.createElement("li");
         if (index === 0) {
           dots.classList.add("dot");
           dots.classList.add("dot-active");
@@ -48,6 +48,7 @@ const slider = () => {
   };
 
   const startSlide = (timer = 1500) => {
+    console.log(dots);
     interval = setInterval(autoSlide, timer);
   };
 
