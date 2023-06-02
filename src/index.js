@@ -6,10 +6,14 @@ import formValidation from "./modules/formValidation";
 import tabs from "./modules/tabs";
 import slider from "./modules/slider";
 
+const sliderBlock = document.querySelector(".portfolio-content");
+const slides = document.querySelectorAll(".portfolio-item");
+const dotsList = document.querySelector(".portfolio-dots");
+
 timer("22 october 2021");
 menu();
 modal();
 calculator();
 formValidation();
 tabs();
-slider();
+slider(sliderBlock, slides, dotsList);

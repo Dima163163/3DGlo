@@ -1,7 +1,12 @@
-const slider = () => {
-  const sliderBlock = document.querySelector(".portfolio-content");
-  const slides = document.querySelectorAll(".portfolio-item");
-  const dotsList = document.querySelector(".portfolio-dots");
+const slider = (sliderBlock, slides, dotsList) => {
+  const defaultSliderBlock = document.querySelector(".portfolio-content");
+  const defaultSlides = document.querySelectorAll(".portfolio-item");
+  const defaultDotsList = document.querySelector(".portfolio-dots");
+
+  if (!(sliderBlock && slides && dotsList)) {
+    defaultSliderBlock.style.display = "none";
+    return;
+  }
   const timerInterval = 2000;
 
   let dots;
