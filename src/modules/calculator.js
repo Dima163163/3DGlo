@@ -47,18 +47,18 @@ const calculator = (price = 100) => {
       calcCount.value &&
       calcDay.value
     ) {
-      total.textContent = outNum(totalValue);
+      outNum(totalValue);
     }
   };
 
   const outNum = (value) => {
-    let n = 0;
+    let totalPrice = 0;
     let interval = setInterval(() => {
-      n = n + step;
-      if (n == value) {
+      totalPrice = totalPrice + step;
+      if (totalPrice == value) {
         clearInterval(interval);
       }
-      total.textContent = n;
+      total.textContent = totalPrice;
     }, 10);
   };
 
