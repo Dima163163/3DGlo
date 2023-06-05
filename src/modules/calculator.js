@@ -37,13 +37,13 @@ const calculator = (price = 100) => {
     if (calckType.value && calcSquare.value) {
       totalValue =
         price * calcTypeValue * calcSquareValue * calcCountValue * cackDayValue;
-      outNum(totalValue);
+      outTotal(totalValue);
     } else {
       totalValue = 0;
     }
   };
 
-  const outNum = (value) => {
+  const outTotal = (value) => {
     let totalPrice = 0;
     let interval = setInterval(() => {
       totalPrice = totalPrice + step;
