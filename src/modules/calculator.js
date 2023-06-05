@@ -6,7 +6,8 @@ const calculator = (price = 100) => {
   const calcDay = document.querySelector(".calc-day");
   const total = document.getElementById("total");
 
-  const step = 10;
+  const time = 1000;
+  const step = 100;
 
   const validateNumbers = function () {
     this.value = this.value.replace(/\D/g, "");
@@ -45,13 +46,14 @@ const calculator = (price = 100) => {
 
   const outTotal = (value) => {
     let totalPrice = 0;
+    let timeValue = Math.round(time / (value / step));
     let interval = setInterval(() => {
       totalPrice = totalPrice + step;
       if (totalPrice == value) {
         clearInterval(interval);
       }
       total.textContent = totalPrice;
-    }, 10);
+    }, timeValue);
   };
 
   calcBlock.addEventListener("input", (e) => {
