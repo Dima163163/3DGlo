@@ -48,7 +48,6 @@ const slider = () => {
   };
 
   const startSlide = (timer = 1500) => {
-    console.log(dots);
     interval = setInterval(autoSlide, timer);
   };
 
