@@ -37,17 +37,9 @@ const calculator = (price = 100) => {
     if (calckType.value && calcSquare.value) {
       totalValue =
         price * calcTypeValue * calcSquareValue * calcCountValue * cackDayValue;
+      outNum(totalValue);
     } else {
       totalValue = 0;
-    }
-
-    if (
-      calckType.value &&
-      calcSquare.value &&
-      calcCount.value &&
-      calcDay.value
-    ) {
-      outNum(totalValue);
     }
   };
 
