@@ -6,6 +6,8 @@ const calculator = (price = 100) => {
   const calcDay = document.querySelector(".calc-day");
   const total = document.getElementById("total");
 
+  const step = 10;
+
   const validateNumbers = function () {
     this.value = this.value.replace(/\D/g, "");
   };
@@ -39,7 +41,25 @@ const calculator = (price = 100) => {
       totalValue = 0;
     }
 
-    total.textContent = totalValue;
+    if (
+      calckType.value &&
+      calcSquare.value &&
+      calcCount.value &&
+      calcDay.value
+    ) {
+      total.textContent = outNum(totalValue);
+    }
+  };
+
+  const outNum = (value) => {
+    let n = 0;
+    let interval = setInterval(() => {
+      n = n + step;
+      if (n == value) {
+        clearInterval(interval);
+      }
+      total.textContent = n;
+    }, 10);
   };
 
   calcBlock.addEventListener("input", (e) => {
