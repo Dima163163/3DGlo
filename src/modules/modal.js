@@ -1,3 +1,5 @@
+import { animate } from "./helpers";
+
 const modal = () => {
   const modal = document.querySelector(".popup");
   const buttons = document.querySelectorAll(".popup-btn");
@@ -6,23 +8,18 @@ const modal = () => {
 
   const width = document.documentElement.clientWidth;
 
-  let count = 0;
-  let idInvertal;
-
   const modalAnimation = () => {
     if (width > 768) {
-      count++;
-
-      idInvertal = requestAnimationFrame(modalAnimation);
-
-      if (count <= 50) {
-        modal.style.display = "block";
-        modalContent.style.transform = `translateX(-${count}px)`;
-      } else {
-        cancelAnimationFrame(idInvertal);
-        modalContent.style = "";
-        count = 0;
-      }
+      animate({
+        duration: 1000,
+        timing(timeFraction) {
+          return timeFraction;
+        },
+        draw(progress) {
+          modal.style.display = "block";
+          modalContent.style = `transform: translateX(-${progress * 50}px)`;
+        },
+      });
     } else {
       modal.style.display = "block";
     }
