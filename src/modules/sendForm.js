@@ -14,17 +14,16 @@ const sendForm = ({ formId, someElem = [] }) => {
 
     list.forEach((input) => {
       if (input.name === "user_name") {
-        console.log(input.value);
         if (!namePattern.test(input.value)) {
           success = false;
         }
       }
-      if (input.phone === "user_phone") {
+      if (input.name === "user_phone") {
         if (!phonePattern.test(input.value)) {
           success = false;
         }
       }
-      if (input.message === "user_message") {
+      if (input.name === "user_message") {
         if (!messagePattern.test(input.value)) {
           success = false;
         }
