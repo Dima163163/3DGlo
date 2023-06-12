@@ -32,17 +32,16 @@ const sendForm = ({ formId, someElem = [] }) => {
 
     list.forEach((input) => {
       if (input.name === "user_name") {
-        console.log(input.value);
         if (!namePattern.test(input.value)) {
           success = false;
         }
       }
-      if (input.phone === "user_phone") {
+      if (input.name === "user_phone") {
         if (!phonePattern.test(input.value)) {
           success = false;
         }
       }
-      if (input.message === "user_message") {
+      if (input.name === "user_message") {
         if (!messagePattern.test(input.value)) {
           success = false;
         }
@@ -67,10 +66,12 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formData = new FormData(form);
     const formBody = {};
 
-    statusBlock.innerHTML = loadAnimation;
+    if (validate(formElements)) {
+      statusBlock.innerHTML = loadAnimation;
+      form.append(statusBlock);
+    }
 
     // statusBlock.textContent = loadText;
-    form.append(statusBlock);
 
     formData.forEach((val, key) => {
       formBody[key] = val;
