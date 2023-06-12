@@ -79,7 +79,6 @@ const sendForm = ({ formId, someElem = [] }) => {
 
     someElem.forEach((elem) => {
       const element = document.getElementById(elem.id);
-      console.log(element);
       if (elem.type === "block") {
         formBody[elem.id] = element.textContent;
       } else if (elem.type === "input") {
@@ -99,7 +98,11 @@ const sendForm = ({ formId, someElem = [] }) => {
           statusBlock.textContent = errorText;
         });
     } else {
-      alert("Данные не валидны!");
+      alert(
+        `Данные не валидны!
+Имя в формате: Иван
+Телефон в формате: X(XXX)XXX-XX-XX`
+      );
     }
   };
 

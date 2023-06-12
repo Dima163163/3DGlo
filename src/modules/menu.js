@@ -82,7 +82,10 @@ const menu = () => {
     }
     if (e.target.closest("a")) {
       menuItemsLinks.forEach((item) => {
-        item.addEventListener("click", scrollAnimation);
+        item.addEventListener("click", (e) => {
+          scrollAnimation(e);
+        });
+        handleMenu();
       });
     }
   });
