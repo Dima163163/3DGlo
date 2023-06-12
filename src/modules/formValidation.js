@@ -5,16 +5,12 @@ const formValidation = () => {
   const emailSelectors = document.querySelectorAll(".form-email");
   const phoneSelectors = document.querySelectorAll(".form-phone");
 
-  // const validtionMessage = function () {
-  //   this.value = this.value.replace(/^[a-zA-Z0-9]+$/, "");
-  // };
-
   const validtionMessage = function () {
     const message = this.value;
-    const messagePattern = /^[а-яё]+(?:[ -]{1}[а-яё]*)?$/i;
+    const messagePattern = /[?!,.а-яёА-ЯЁ0-9\s]/i;
     const isValid = messagePattern.test(message);
     if (!isValid) {
-      this.setCustomValidity("Неправильный формат вода.Только кириллица.");
+      this.setCustomValidity("Неправильный формат ввода.Только кириллица.");
     } else {
       this.setCustomValidity("");
     }
@@ -36,10 +32,8 @@ const formValidation = () => {
 
   const validationPhone = function () {
     const phone = this.value;
-    console.log(phone);
-    const phonePattern = /\d{1}\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g;
+    const phonePattern = /\+\d{1}\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g;
     const isValid = phonePattern.test(phone);
-    console.log(isValid);
     if (!isValid) {
       this.setCustomValidity("Формат телефона в виде: X(XXX)XXX-XX-XX");
     } else {
