@@ -56,7 +56,6 @@ const menu = () => {
   const scrollAnimation = function (event) {
     event.preventDefault();
     let scrollTarget = event.currentTarget.getAttribute("href").slice(1);
-    console.log("scrollTarget", scrollTarget);
     smoothScroll(scrollTarget, 1000);
   };
 
@@ -82,7 +81,10 @@ const menu = () => {
     }
     if (e.target.closest("a")) {
       menuItemsLinks.forEach((item) => {
-        item.addEventListener("click", scrollAnimation);
+        item.addEventListener("click", (e) => {
+          scrollAnimation(e);
+        });
+        handleMenu();
       });
     }
   });

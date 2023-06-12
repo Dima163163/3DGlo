@@ -77,7 +77,7 @@ const sendForm = ({ formId, someElem = [] }) => {
           statusBlock.textContent = errorText;
         });
     } else {
-      alert("Данные не валидны!");
+      alert("Данные в формах неправильно заполнены!");
     }
   };
 
