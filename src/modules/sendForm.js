@@ -1,7 +1,25 @@
 const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId);
   const statusBlock = document.createElement("div");
-  const loadText = "Загрузка...";
+  // const loadText = "Загрузка...";
+  const loadAnimation = `
+	<div class="loadingio-spinner-spinner-m4xibvllzcq">
+		<div class="ldio-8xzujic9q5p">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	`;
   const errorText = "Ошибка";
   const successText = "Спасибо! Наш менеджер свяжется с вами!";
 
@@ -49,7 +67,9 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formData = new FormData(form);
     const formBody = {};
 
-    statusBlock.textContent = loadText;
+    statusBlock.innerHTML = loadAnimation;
+
+    // statusBlock.textContent = loadText;
     form.append(statusBlock);
 
     formData.forEach((val, key) => {
