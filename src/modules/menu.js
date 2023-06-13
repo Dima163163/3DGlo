@@ -84,10 +84,9 @@ const menu = () => {
       menuItemsLinks.forEach((item) => {
         item.addEventListener("click", (e) => {
           scrollAnimation(e);
-          
         });
-        handleMenu();
       });
+      handleMenu();
     }
   });
 
