@@ -5,7 +5,6 @@ const menu = () => {
   const menuItemsLinks = menu.querySelectorAll('ul>li>a[href*="#"]');
 
   const handleMenu = () => {
-    console.log('sdfdsfsd')
     menu.classList.toggle("active-menu");
   };
 
